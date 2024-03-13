@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
-# you should chmod this file besfore using run.py --> chmod +x scrape.py
+# you should chmod this file before using run.py --> chmod +x Cron_job.py
+# this file is created to create a log file to track the cron job progress
+# to do the cron job to run every 5 minutes
+# 1- type in terminal --> crontab -e
+# 2- choose the editor you prefer
+# 3- type --> */5 * * * * python3 /home/ubuntu/RCP-Corum/src/run.py
+# 4- save and exit
 import logging
 import os
 dir_path = os.path.dirname(os.path.realpath(__file__))

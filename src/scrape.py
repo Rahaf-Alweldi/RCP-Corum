@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# you should chmod this file besfore using run.py --> chmod +x scrape.py
+# you should chmod this file before using run.py --> chmod +x scrape.py
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
