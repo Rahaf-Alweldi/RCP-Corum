@@ -8,26 +8,18 @@ This project is designed to extract information about watches from the Corum web
 2. [Requirements](#requirements)
 3. [Project Structure](#project-structure)
 4. [Project Architecture](#project-architecture)
-5. [Usage](#usage)
-6. [Setting Up Cron Job](#setting-up-cron-job)
-7. [AWS EC2 Deployment](#aws-ec2-deployment)
-8. [Code Explanation](#code-explanation)
-9. [Notes](#notes)
+5. [AWS EC2 Deployment](#aws-ec2-deployment)
+6. [Code Explanation](#code-explanation)
+7. [Setting Up Cron Job](#setting-up-cron-job)
+8. [Data Analysis](#data-analysis)
 
-
-## Project Architecture
-
-![image](https://github.com/Rahaf-Alweldi/RCP-Corum/assets/163084070/5332dafd-542c-47e3-8a3f-e0713bda7f6c)
-
-
-
-
-
-
-
+---
+<be></br><be></br>
 ## Features
 
 - Scrapes data from multiple collections of watches on the Corum website.
+- Data cleaning to ensure the integrity and usability of the extracted data.
+- Cron job setup to automate the scraping process at regular intervals.
 - Extracts detailed information for each watch, including:
 
 | Field Label | Description of Field |
@@ -72,15 +64,110 @@ This project is designed to extract information about watches from the Corum web
 | features | Might be called features, functions, or complications. We're looking for a complete list of functions or features that a watch has. |
 | description | Will be the paragraph or two main product description. |
 
-
-- Data cleaning to ensure the integrity and usability of the extracted data.
-- Cron job setup to automate the scraping process at regular intervals.
-- Implementation on AWS EC2 for reliable and scalable execution.
-
+---
+<be></br><be></br>
 ## Requirements
 
-- Python 3.x
+- Python 3
 - `requests`
 - `BeautifulSoup4`
 - `pandas`
 
+---
+<be></br><be></br>
+## Project Structure
+
+- :file_folder: data:
+  - `Corum_timestamp.csv`: The initial data collected directly from the Corum website.
+  - `Cleaned_data.csv`: Contains the data after it has been cleaned and processed.
+- :file_folder: src:
+  - `scrape.py`: Script for scraping data from the Corum website.
+  - `processing.py`: Script for cleaning the scraped data.
+  - `Cron_job.py`: Script to retrieves the current timestamp, and appends it into a log file `Cron_job.log` to track the progress of the cronjob.
+  - `run.py`: Script to list the required python files to be executed.
+- :file_folder: venv: A virtual environment to store our libraries.
+- `init.sh`: Automate the setup process to create a virtual environment in the `venv` directory, activate it, and install all necessary dependencies listed in `requirements.txt`.
+- `requirements.txt`: List of Python dependencies.
+- `README.md`: Project documentation.
+
+---
+<be></br><be></br>
+## Project Architecture
+
+![image](https://github.com/Rahaf-Alweldi/RCP-Corum/assets/163084070/5332dafd-542c-47e3-8a3f-e0713bda7f6c)
+
+1. Data Collection
+  - Collects URLs of individual watches from the Corum collections pages.
+  - Scrapes detailed information for each watch.
+  - Saves the raw data into a CSV file.
+2. Data Cleaning
+  - Drop the empty columns.
+  - Change currency from CHF to USD.
+  - Clean the description column from any extra HTML tags.
+3. Task Automation
+4. Data Analysis
+
+---
+<be></br><be></br>
+## AWS EC2 Deployment
+
+1. Launch an EC2 instance on Amazon Web Services (AWS).
+2. Connecting VSCode to EC2 Instance.
+3. Install dependencies on EC2 by running `init.sh` in the terminal.
+
+---
+<be></br><be></br>
+## Code Explanation
+
+1. **Collect URLs:** Scrapes the URLs of individual watches from the collections pages.
+2. **Scrape Data:** For each watch URL, scrape various details about the watch.
+3. **Save Data:** Converts the data dictionary into a pandas DataFrame and saves it to a CSV file.
+4. **Data Cleaning:** The `processing.py` script processes the raw data to ensure consistency and correctness.
+5. **Cronjob:** Script to create a log file used in tracking cronjob progress.
+6. **Data Analysis:** External notebook performed the data analysis.
+
+---
+<be></br><be></br>
+## Setting Up Cron Job
+
+1. Make the scripts executable.
+```
+chmod +x scrape.py
+```
+```
+chmod +x processing.py
+```
+```
+chmod +x Cron_job.py
+```
+```
+chmod +x run.py
+```
+2. Edit the crontab.
+```
+crontab -e
+```
+3. Add the following line to schedule the scraper to run every 5 minutes.
+```
+*/5 * * * * python3 /home/ubuntu/RCP-Corum/src/run.py
+```
+
+---
+<be></br><be></br>
+## Data Analysis
+
+1. Total number of watches by collection
+
+![image](https://github.com/Rahaf-Alweldi/RCP-Corum/assets/163084070/c471ec95-5034-4f42-8c50-cd9d204b2488)
+
+2. Average price by collection
+
+![image](https://github.com/Rahaf-Alweldi/RCP-Corum/assets/163084070/8674f55b-3482-4707-b0ef-30d9f769e5c8)
+
+3. Most expensive watches
+
+![image](https://github.com/Rahaf-Alweldi/RCP-Corum/assets/163084070/933c9d34-7b03-4087-b548-05cc3f038b29)
+
+4. Watch color segmentation
+
+![image](https://github.com/Rahaf-Alweldi/RCP-Corum/assets/163084070/b0e84a51-dd2d-40ab-bbe6-13cd5b875dbf)
