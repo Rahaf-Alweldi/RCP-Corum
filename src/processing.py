@@ -18,12 +18,24 @@ data = data.drop(columns_to_drop, axis=1)
 # format price rows
 data['price'] = data['price'].str.replace(' ', '')
 data['price'] = data['price'].str.replace(',', '.')
+data['price'] = data['price'].astype(float)
+
+# Cnovert currency from CHF to USD
+# Exchange rate from CHF to USD
+exchange_rate_CHF_to_USD = 1.10  # For example, 1 CHF = 1.10 USD
+
+# Function to convert currency from CHF to USD
+def convert_currency(amount_CHF):
+    return amount_CHF * exchange_rate_CHF_to_USD
+
+data['price'] = data['price'].apply(convert_currency)
+data['currency'] = data['currency'].str.replace("CHF", "USD")
 
 # replace every row that ends with h into hours
 data['power_reserve'] = data['power_reserve'].str.replace("h", "hours")
 data['power_reserve'] = data['power_reserve'].str.replace("hoursours", "hours")
 
-
+    
 # remove HTML tags from description column
 def remove_htmlTags(text):
     clean = re.compile('<.*?>')
