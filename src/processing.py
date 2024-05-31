@@ -26,7 +26,7 @@ exchange_rate_CHF_to_USD = 1.10  # For example, 1 CHF = 1.10 USD
 
 # Function to convert currency from CHF to USD
 def convert_currency(amount_CHF):
-    return amount_CHF * exchange_rate_CHF_to_USD
+    return round(amount_CHF * exchange_rate_CHF_to_USD, 2)
 
 data['price'] = data['price'].apply(convert_currency)
 data['currency'] = data['currency'].str.replace("CHF", "USD")
