@@ -14,7 +14,7 @@ This project is designed to extract information about watches from the Corum web
 8. [Data Analysis](#data-analysis)
 
 ---
-<be></br><be></br>
+<be></br>
 ## Features
 
 - Scrapes data from multiple collections of watches on the Corum website.
@@ -65,7 +65,7 @@ This project is designed to extract information about watches from the Corum web
 | description | Will be the paragraph or two main product description. |
 
 ---
-<be></br><be></br>
+<be></br>
 ## Requirements
 
 - Python 3
@@ -74,7 +74,7 @@ This project is designed to extract information about watches from the Corum web
 - `pandas`
 
 ---
-<be></br><be></br>
+<be></br>
 ## Project Structure
 
 - :file_folder: data:
@@ -91,7 +91,7 @@ This project is designed to extract information about watches from the Corum web
 - `README.md`: Project documentation.
 
 ---
-<be></br><be></br>
+<be></br>
 ## Project Architecture
 
 ![image](https://github.com/Rahaf-Alweldi/RCP-Corum/assets/163084070/5332dafd-542c-47e3-8a3f-e0713bda7f6c)
@@ -108,7 +108,7 @@ This project is designed to extract information about watches from the Corum web
 4. Data Analysis
 
 ---
-<be></br><be></br>
+<be></br>
 ## AWS EC2 Deployment
 
 1. Launch an EC2 instance on Amazon Web Services (AWS).
@@ -116,7 +116,7 @@ This project is designed to extract information about watches from the Corum web
 3. Install dependencies on EC2 by running `init.sh` in the terminal.
 
 ---
-<be></br><be></br>
+<be></br>
 ## Code Explanation
 
 1. **Collect URLs:** Scrapes the URLs of individual watches from the collections pages.
@@ -127,7 +127,7 @@ This project is designed to extract information about watches from the Corum web
 6. **Data Analysis:** External notebook performed the data analysis.
 
 ---
-<be></br><be></br>
+<be></br>
 ## Setting Up Cron Job
 
 1. Make the scripts executable.
@@ -153,7 +153,7 @@ crontab -e
 ```
 
 ---
-<be></br><be></br>
+<be></br>
 ## Data Analysis
 
 1. Total number of watches by collection
