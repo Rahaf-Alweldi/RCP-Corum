@@ -17,6 +17,7 @@ This project is designed to extract information about watches from the Corum web
 <be></br>
 ## Features
 
+- Scraping target https://www.corum-watches.com/
 - Scrapes data from multiple collections of watches on the Corum website.
 - Data cleaning to ensure the integrity and usability of the extracted data.
 - Cron job setup to automate the scraping process at regular intervals.
