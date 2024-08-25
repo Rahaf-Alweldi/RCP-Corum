@@ -97,17 +97,6 @@ This project is designed to extract information about watches from the Corum web
 
 ![image](https://github.com/Rahaf-Alweldi/RCP-Corum/assets/163084070/5332dafd-542c-47e3-8a3f-e0713bda7f6c)
 
-1. Data Collection
-  - Collects URLs of individual watches from the Corum collections pages.
-  - Scrapes detailed information for each watch.
-  - Saves the raw data into a CSV file.
-2. Data Cleaning
-  - Drop the empty columns.
-  - Change currency from CHF to USD.
-  - Clean the description column from any extra HTML tags.
-3. Task Automation
-4. Data Analysis
-
 ---
 <br></br>
 ## AWS EC2 Deployment
